@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.iquestgroup</groupId>
+    <artifactId>eshop</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <name>eshop</name>
+
+    <modules>
+        <module>eshop-persistence</module>
+        <module>eshop-storefront</module>
+        <module>eshop-business</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <eshop.business.version>1.0.0-SNAPSHOT</eshop.business.version>
+        <eshop.peristence.version>1.0.0-SNAPSHOT</eshop.peristence.version>
+        <junit.version>4.11</junit.version>
+        <hibernate.version>5.4.10.Final</hibernate.version>
+        <mysql.connector.version>8.0.20</mysql.connector.version>
+        <hibernate.jpamodelgen.version>5.4.19.Final</hibernate.jpamodelgen.version>
+        <jaxrs.ri.version>2.31</jaxrs.ri.version>
+        <javax.servlet.version>4.0.1</javax.servlet.version>
+        <jbcrypt.version>0.4</jbcrypt.version>
+        <jersey.servlet.version>1.19.4</jersey.servlet.version>
+        <javax.servlet.version>4.0.1</javax.servlet.version>
+        <tomcat.version>7.0.105</tomcat.version>
+        <jersey.bundle.version>1.18</jersey.bundle.version>
+        <jersey.json.version>1.17.1</jersey.json.version>
+        <junit-jupiter-engine.version>5.6.2</junit-jupiter-engine.version>
+        <jsoup.version>1.13.1</jsoup.version>
+        <log4j.version>2.13.3</log4j.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.iquestgroup</groupId>
+                <artifactId>eshop-business</artifactId>
+                <version>${eshop.business.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.iquestgroup</groupId>
+                <artifactId>eshop-persistence</artifactId>
+                <version>${eshop.peristence.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish.jersey.bundles</groupId>
+                <artifactId>jaxrs-ri</artifactId>
+                <version>${jaxrs.ri.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mindrot</groupId>
+                <artifactId>jbcrypt</artifactId>
+                <version>${jbcrypt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.0</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <annotationProcessorPaths>
+                            <annotationProcessorPath>
+                                <groupId>org.hibernate</groupId>
+                                <artifactId>hibernate-jpamodelgen</artifactId>
+                                <version>${hibernate.jpamodelgen.version}</version>
+                            </annotationProcessorPath>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

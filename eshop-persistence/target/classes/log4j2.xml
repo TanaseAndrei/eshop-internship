@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="WARN" strict="true">
+    <Properties>
+        <Property name="logdir">eshop-persistence\src\main\logs</Property>
+        <Property name="layout">%d{dd MMM yyyy} | %d{HH:mm:ss,SSS} | [%t] | %-5level | %-30logger{1} | Line:%L | %msg%n
+        </Property>
+    </Properties>
+
+    <Appenders>
+        <Appender type="RollingRandomAccessFile" name="RollingRandomAccessFile"
+                  fileName="${logdir}\persistence.log"
+                  filePattern="${logdir}\$${date:yyyy-MM}\persistence-%d{yyyy-MM-dd-HH}-%i.log.zip"
+                  append="true">
+            <Layout type="PatternLayout">
+                <Pattern>
+                    ${layout}
+                </Pattern>
+            </Layout>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy>
+                    <Interval>
+                        6
+                    </Interval>
+
+                    <Modulate>
+                        true
+                    </Modulate>
+                </TimeBasedTriggeringPolicy>
+
+                <SizeBasedTriggeringPolicy>
+                    <Size>
+                        250 MB
+                    </Size>
+                </SizeBasedTriggeringPolicy>
+            </Policies>
+
+            <DefaultRolloverStrategy>
+                <Max>
+                    20
+                </Max>
+
+                <CompressionLevel>
+                    9
+                </CompressionLevel>
+            </DefaultRolloverStrategy>
+        </Appender>
+    </Appenders>
+
+    <Loggers>
+        <Root level="error">
+            <AppenderRef>
+                <Ref>
+                    RollingRandomAccessFile
+                </Ref>
+            </AppenderRef>
+        </Root>
+
+        <Logger name="com.iquestgroup.factories" level="error" additivity="false">
+            <AppenderRef>
+                <Ref>
+                    RollingRandomAccessFile
+                </Ref>
+            </AppenderRef>
+        </Logger>
+
+        <Logger name="com.iquestgroup.implementations" level="error" additivity="false">
+            <AppenderRef>
+                <Ref>
+                    RollingRandomAccessFile
+                </Ref>
+            </AppenderRef>
+        </Logger>
+    </Loggers>
+</Configuration>
